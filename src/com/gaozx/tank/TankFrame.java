@@ -15,6 +15,7 @@ public class TankFrame extends Frame {
 
     List<Bullet> bullets = new ArrayList<>();
 
+
     //构造方法
     public TankFrame() throws HeadlessException {
         setSize(800,600);

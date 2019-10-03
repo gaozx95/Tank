@@ -10,7 +10,7 @@ public class Tank {
     private static final int WIDTH = 50,HEIGHT = 50;
     private TankFrame tf = null;
 
-    public Tank(int x, int y, Dir dir,TankFrame tf) {
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
