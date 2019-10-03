@@ -4,7 +4,8 @@ import java.awt.*;
 
 public class Tank {
     private int x ,y;
-    private Dir dir = Dir.DOWN;
+    private Dir dir;
+    private boolean moving = false;
     private static final int SPEED = 10;
 
     public Tank(int x, int y, Dir dir) {
@@ -21,8 +22,23 @@ public class Tank {
         this.dir = dir;
     }
 
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
+
     public void paint(Graphics g) {
         g.fillRect(x,y,50,50);
+
+        move();
+
+    }
+
+    private void move() {
+        if(!isMoving()) return;
         switch (dir){
             case LEFT:
                 x -= SPEED;
