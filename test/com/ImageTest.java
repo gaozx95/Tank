@@ -13,7 +13,10 @@ public class ImageTest {
     @Test
     void test(){
         try {
-            BufferedImage image = ImageIO.read(new File("D:\\javaProject\\Tank\\src\\images\\BadTank1.png"));
+//            BufferedImage image = ImageIO.read(new File("D:\\javaProject\\Tank\\src\\images\\BadTank1.png"));
+//            assertNotNull(image);
+//
+            BufferedImage image = ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("images/bulletD.gif"));
             assertNotNull(image);
         } catch (IOException e) {
             e.printStackTrace();
