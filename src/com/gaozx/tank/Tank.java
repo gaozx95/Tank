@@ -1,23 +1,36 @@
 package com.gaozx.tank;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Tank {
-    private int x ,y;
-    private Dir dir;
-    private boolean moving = false;
-    private boolean living = true;
-
-    private static final int SPEED = 5;
+    private static final int SPEED = 1;
     public static final int WIDTH = ResourceMgr.tankD.getWidth();
     public static final int HEIGHT = ResourceMgr.tankD.getHeight();
-    private TankFrame tf = null;
 
-    public Tank(int x, int y, Dir dir, TankFrame tf) {
+    private int x ,y;
+    private Dir dir = Dir.DOWN;
+    private Random random = new Random();
+
+    private boolean moving = true;
+    private boolean living = true;
+    private TankFrame tf = null;
+    private Group group = Group.BAD;
+
+    public Tank(int x, int y, Dir dir,Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public int getX() {
@@ -96,12 +109,18 @@ public class Tank {
             default:
                 break;
         }
+        if(random.nextInt(10) > 8)
+            this.fire();
+        randomDir();
+    }
+
+    private void randomDir() {
     }
 
     public void fire() {
         int bx = this.x + (Tank.WIDTH - Bullet.HEIGHT)/2;
         int by = this.y + (Tank.HEIGHT - Bullet.HEIGHT)/2;
-        tf.bullets.add(new Bullet(bx,by,this.dir,this.tf));
+        tf.bullets.add(new Bullet(bx,by,this.dir,this.group,this.tf));
     }
 
     public void die() {
