@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TankFrame extends Frame {
-    static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
+    static final int GAME_WIDTH = 1200,GAME_HEIGHT = 800;
 
     Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
 
@@ -19,7 +19,7 @@ public class TankFrame extends Frame {
     //Expolde e = new Expolde(100,100,this);
     //构造方法
     public TankFrame() throws HeadlessException {
-        setSize(800,600);
+        setSize(GAME_WIDTH,GAME_HEIGHT);
         setResizable(false);
         setTitle("Tank War");
         setVisible(true);
