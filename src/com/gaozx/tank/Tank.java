@@ -113,7 +113,8 @@ public class Tank {
             this.fire();
             randomDir();
         }
-
+        if(x<0 || y<0 || x > TankFrame.GAME_WIDTH || y> TankFrame.GAME_HEIGHT)
+            living = false;
     }
 
     private void randomDir() {

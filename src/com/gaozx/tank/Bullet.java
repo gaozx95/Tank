@@ -48,7 +48,6 @@ public class Bullet {
                 break;
         }
 
-
         move();
 
     }
