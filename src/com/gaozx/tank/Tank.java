@@ -109,12 +109,30 @@ public class Tank {
             default:
                 break;
         }
-        if(random.nextInt(10) > 8)
+        if(group==Group.BAD && random.nextInt(10) > 8){
             this.fire();
-        randomDir();
+            randomDir();
+        }
+
     }
 
     private void randomDir() {
+        int d = random.nextInt(4);
+        switch (d){
+            case 1:
+                dir = Dir.LEFT;
+                break;
+            case 2:
+                dir = Dir.UP;
+                break;
+            case 3:
+                dir = Dir.RIGHT;
+                break;
+            case 4:
+                dir = Dir.DOWN;
+                break;
+        }
+
     }
 
     public void fire() {

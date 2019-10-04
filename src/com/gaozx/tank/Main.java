@@ -8,7 +8,7 @@ public class Main {
 
         //初始化敌方坦克
         for (int i =0 ;i<5 ;i++){
-            tf.tanks.add(new Tank(100+i*40,100,Dir.DOWN,Group.BAD,tf));
+            tf.tanks.add(new Tank(100+i*100,200,Dir.DOWN,Group.BAD,tf));
         }
 
         while (true){

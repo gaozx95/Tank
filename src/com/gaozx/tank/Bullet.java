@@ -84,6 +84,7 @@ public class Bullet {
         if(rect1.intersects(rect2)){
             tank.die();
             this.die();
+            tf.expoldes.add(new Expolde(tank.getX(),tank.getY(),this.tf));
         }
     }
 
