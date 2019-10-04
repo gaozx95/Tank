@@ -11,10 +11,10 @@ import java.util.List;
 public class TankFrame extends Frame {
     static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 
-    Tank myTank = new Tank(200,200,Dir.DOWN,this);
+    Tank myTank = new Tank(200,400,Dir.DOWN,this);
 
     List<Bullet> bullets = new ArrayList<>();
-
+    List<Tank> tanks = new ArrayList<>();
 
     //构造方法
     public TankFrame() throws HeadlessException {
@@ -59,6 +59,10 @@ public class TankFrame extends Frame {
         //画子弹
         for (int i = 0;i<bullets.size();i++){
             bullets.get(i).paint(g);
+        }
+
+        for (int i = 0;i<tanks.size();i++){
+            tanks.get(i).paint(g);
         }
     }
 
