@@ -16,7 +16,6 @@ public class TankFrame extends Frame {
     List<Bullet> bullets = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
     List<Expolde> expoldes = new ArrayList<>();
-    //Expolde e = new Expolde(100,100,this);
     //构造方法
     public TankFrame() throws HeadlessException {
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -67,15 +66,16 @@ public class TankFrame extends Frame {
             tanks.get(i).paint(g);
         }
 
+        for (int i = 0 ;i<expoldes.size();i++){
+            expoldes.get(i).paint(g);
+        }
+
         for(int i= 0 ;i <bullets.size();i++){
             for (int j = 0; j<tanks.size();j++){
                 bullets.get(i).collideWith(tanks.get(j));
             }
         }
-        //e.paint(g);
-        for (int i = 0 ;i<expoldes.size();i++){
-            expoldes.get(i).paint(g);
-        }
+
     }
 
     class MyKeyListener extends KeyAdapter{

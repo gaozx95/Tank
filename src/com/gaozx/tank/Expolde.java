@@ -19,6 +19,6 @@ public class Expolde {
         g.drawImage(ResourceMgr.explodes[step++],x,y,null);
 
         if(step>=ResourceMgr.explodes.length)
-            step = 0;
+            tf.expoldes.remove(this);
     }
 }
