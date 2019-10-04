@@ -109,7 +109,7 @@ public class Tank {
             default:
                 break;
         }
-        if(group==Group.BAD && random.nextInt(10) > 8){
+        if(group==Group.BAD && random.nextInt(50) > 42){
             this.fire();
             randomDir();
         }
@@ -118,21 +118,7 @@ public class Tank {
     }
 
     private void randomDir() {
-        int d = random.nextInt(4);
-        switch (d){
-            case 1:
-                dir = Dir.LEFT;
-                break;
-            case 2:
-                dir = Dir.UP;
-                break;
-            case 3:
-                dir = Dir.RIGHT;
-                break;
-            case 4:
-                dir = Dir.DOWN;
-                break;
-        }
+        this.dir = Dir.values()[random.nextInt(4)];
 
     }
 

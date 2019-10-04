@@ -80,10 +80,12 @@ public class Bullet {
         Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
         Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
 
-        if(rect1.intersects(rect2)){
+        if(rect1.intersects(rect2)) {
             tank.die();
             this.die();
-            tf.expoldes.add(new Expolde(tank.getX(),tank.getY(),this.tf));
+            int ex = tank.getX() + (Tank.WIDTH - Expolde.HEIGHT) / 2;
+            int ey = tank.getY() + (Tank.HEIGHT - Expolde.HEIGHT) / 2;
+            tf.expoldes.add(new Expolde(ex, ey, this.tf));
         }
     }
 
