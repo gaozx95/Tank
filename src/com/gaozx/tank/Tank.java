@@ -6,8 +6,11 @@ public class Tank {
     private int x ,y;
     private Dir dir;
     private boolean moving = false;
+    private boolean living = true;
+
     private static final int SPEED = 5;
-    public static final int WIDTH = ResourceMgr.tankD.getWidth(),HEIGHT = ResourceMgr.tankD.getHeight();
+    public static final int WIDTH = ResourceMgr.tankD.getWidth();
+    public static final int HEIGHT = ResourceMgr.tankD.getHeight();
     private TankFrame tf = null;
 
     public Tank(int x, int y, Dir dir, TankFrame tf) {
@@ -15,6 +18,22 @@ public class Tank {
         this.y = y;
         this.dir = dir;
         this.tf = tf;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public Dir getDir() {
@@ -35,6 +54,9 @@ public class Tank {
 
     public void paint(Graphics g) {
         //画图片
+        if(!living){
+            tf.tanks.remove(this);
+        }
         switch (dir){
             case LEFT:
                 g.drawImage(ResourceMgr.tankL,x,y,null);
@@ -55,7 +77,9 @@ public class Tank {
     }
 
     private void move() {
-        if(!isMoving()) return;
+        if(!isMoving()){
+            return;
+        }
         switch (dir){
             case LEFT:
                 x -= SPEED;
@@ -78,5 +102,9 @@ public class Tank {
         int bx = this.x + (Tank.WIDTH - Bullet.HEIGHT)/2;
         int by = this.y + (Tank.HEIGHT - Bullet.HEIGHT)/2;
         tf.bullets.add(new Bullet(bx,by,this.dir,this.tf));
+    }
+
+    public void die() {
+        this.living = false;
     }
 }
