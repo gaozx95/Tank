@@ -8,6 +8,8 @@ public class Tank {
     public static final int WIDTH = ResourceMgr.goodTankU.getWidth();
     public static final int HEIGHT = ResourceMgr.goodTankU.getHeight();
 
+    Rectangle rect = new Rectangle();
+
     private int x ,y;
     private Dir dir = Dir.DOWN;
     private Random random = new Random();
@@ -23,6 +25,10 @@ public class Tank {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public Group getGroup() {
@@ -115,7 +121,9 @@ public class Tank {
         }
 
         boundsCheck();
-
+        //update rect
+        rect.x = this.x;
+        rect.y = this.y;
     }
     //边界检测
     private void boundsCheck() {
