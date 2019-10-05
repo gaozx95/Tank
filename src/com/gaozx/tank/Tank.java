@@ -72,16 +72,16 @@ public class Tank {
         }
         switch (dir){
             case LEFT:
-                g.drawImage(ResourceMgr.goodTankL,x,y,null);
+                g.drawImage(this.group.equals(Group.BAD)? ResourceMgr.badTankL:ResourceMgr.goodTankL, x, y, null);
                 break;
             case UP:
-                g.drawImage(ResourceMgr.goodTankU,x,y,null);
+                g.drawImage(this.group.equals(Group.BAD)? ResourceMgr.badTankU:ResourceMgr.goodTankU, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(ResourceMgr.goodTankR,x,y,null);
+                g.drawImage(this.group.equals(Group.BAD)? ResourceMgr.badTankR:ResourceMgr.goodTankR, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(ResourceMgr.goodTankD,x,y,null);
+                g.drawImage(this.group.equals(Group.BAD)? ResourceMgr.badTankD:ResourceMgr.goodTankD, x, y, null);
                 break;
         }
 
