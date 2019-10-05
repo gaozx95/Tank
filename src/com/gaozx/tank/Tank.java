@@ -42,8 +42,12 @@ public class Tank {
 
         if(group == Group.GOOD) {
             try {
-                fs = (FireStrategy) Class.forName((String)PropertyMgr.get("goodFs")).getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
+                fs = (FireStrategy) Class.forName((String)PropertyMgr.get("goodFs")).newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
