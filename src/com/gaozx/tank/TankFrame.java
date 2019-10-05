@@ -11,13 +11,13 @@ import java.util.List;
 public class TankFrame extends Frame {
     static final int GAME_WIDTH =  PropertyMgr.getInt("gameWidth");
     static final int GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
-    ;
+
 
     Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
 
     List<Bullet> bullets = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
-    List<Expolde> expoldes = new ArrayList<>();
+    List<Explode> explodes = new ArrayList<>();
     //构造方法
     public TankFrame() throws HeadlessException {
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -68,8 +68,8 @@ public class TankFrame extends Frame {
             tanks.get(i).paint(g);
         }
 
-        for (int i = 0 ;i<expoldes.size();i++){
-            expoldes.get(i).paint(g);
+        for (int i = 0; i< explodes.size(); i++){
+            explodes.get(i).paint(g);
         }
 
         for(int i= 0 ;i <bullets.size();i++){

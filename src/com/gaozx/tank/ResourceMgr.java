@@ -3,7 +3,7 @@ package com.gaozx.tank;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
+
 
 public class ResourceMgr {
     public static BufferedImage goodTankL,goodTankU,goodTankR,goodTankD;

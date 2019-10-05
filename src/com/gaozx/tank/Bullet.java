@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Bullet {
     public static final int SPEED = PropertyMgr.getInt("bulletSpeed");
-    ;
+
     public static final int WIDTH = ResourceMgr.bulletD.getWidth();
     public static final int HEIGHT =ResourceMgr.bulletD.getHeight();
 
@@ -92,9 +92,9 @@ public class Bullet {
         if(this.rect.intersects(tank.rect)) {
             tank.die();
             this.die();
-            int ex = tank.getX() + (Tank.WIDTH - Expolde.HEIGHT) / 2;
-            int ey = tank.getY() + (Tank.HEIGHT - Expolde.HEIGHT) / 2;
-            tf.expoldes.add(new Expolde(ex, ey, this.tf));
+            int ex = tank.getX() + (Tank.WIDTH - Explode.WIDTH) / 2;
+            int ey = tank.getY() + (Tank.HEIGHT - Explode.HEIGHT) / 2;
+            tf.explodes.add(new Explode(ex, ey, this.tf));
         }
     }
 
