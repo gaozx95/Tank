@@ -1,5 +1,10 @@
 package com.gaozx.tank;
 
+import com.gaozx.tank.Strategy.DefaultFireStrategy;
+import com.gaozx.tank.Strategy.FireStrategy;
+import com.gaozx.tank.Strategy.FourDirFireStrategy;
+
+import javax.crypto.spec.DESedeKeySpec;
 import java.awt.*;
 import java.util.Random;
 
@@ -17,6 +22,10 @@ public class Tank {
 
     private boolean moving = true;
     private boolean living = true;
+
+
+    FireStrategy fs = DefaultFireStrategy.getInstance();
+//    FireStrategy fs ;
     private TankFrame tf = null;
     private Group group = Group.BAD;
 
@@ -30,6 +39,22 @@ public class Tank {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        if(group == Group.GOOD) {
+            try {
+                fs = (FireStrategy) Class.forName((String)PropertyMgr.get("goodFs")).newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+//        else {
+//            fs = DefaultFireStrategy.getInstance();
+//        }
     }
 
     public Group getGroup() {
@@ -62,6 +87,10 @@ public class Tank {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    public TankFrame getTf() {
+        return this.tf;
     }
 
     public boolean isMoving() {
@@ -140,9 +169,7 @@ public class Tank {
     }
 
     public void fire() {
-        int bx = this.x + (Tank.WIDTH - Bullet.HEIGHT)/2;
-        int by = this.y + (Tank.HEIGHT - Bullet.HEIGHT)/2;
-        tf.bullets.add(new Bullet(bx,by,this.dir,this.group,this.tf));
+       fs.fire(this);
     }
 
     public void die() {
