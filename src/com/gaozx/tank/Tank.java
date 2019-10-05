@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class Tank {
-    private static final int SPEED = 5;
+    private static final int SPEED = PropertyMgr.getInt("tankSpeed");
+    ;
     public static final int WIDTH = ResourceMgr.goodTankU.getWidth();
     public static final int HEIGHT = ResourceMgr.goodTankU.getHeight();
 

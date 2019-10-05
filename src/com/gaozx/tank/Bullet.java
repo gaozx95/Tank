@@ -3,7 +3,8 @@ package com.gaozx.tank;
 import java.awt.*;
 
 public class Bullet {
-    public static final int SPEED = 10;
+    public static final int SPEED = PropertyMgr.getInt("bulletSpeed");
+    ;
     public static final int WIDTH = ResourceMgr.bulletD.getWidth();
     public static final int HEIGHT =ResourceMgr.bulletD.getHeight();
 

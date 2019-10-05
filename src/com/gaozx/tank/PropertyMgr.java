@@ -16,4 +16,8 @@ public class PropertyMgr {
         if(props == null) return null;
         return props.get(key);
     }
+    public static int getInt(String key){
+        if(props == null) return -1;
+        return Integer.parseInt((String)props.get(key));
+    }
 }

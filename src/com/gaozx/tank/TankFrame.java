@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TankFrame extends Frame {
-    static final int GAME_WIDTH = 1200,GAME_HEIGHT = 800;
+    static final int GAME_WIDTH =  PropertyMgr.getInt("gameWidth");
+    static final int GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
+    ;
 
     Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
 
