@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class Tank {
-    private static final int SPEED = 1;
+    private static final int SPEED = 5;
     public static final int WIDTH = ResourceMgr.goodTankU.getWidth();
     public static final int HEIGHT = ResourceMgr.goodTankU.getHeight();
 
@@ -113,8 +113,16 @@ public class Tank {
             this.fire();
             randomDir();
         }
-        if(x<0 || y<0 || x > TankFrame.GAME_WIDTH || y> TankFrame.GAME_HEIGHT)
-            living = false;
+
+        boundsCheck();
+
+    }
+    //边界检测
+    private void boundsCheck() {
+        if(this.x < 5) x = 5;
+        if(this.y < 30) y = 30;
+        if(this.x > TankFrame.GAME_WIDTH - Tank.WIDTH - 5) x = TankFrame.GAME_WIDTH - Tank.WIDTH - 5 ;
+        if(this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 5) y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 5;
     }
 
     private void randomDir() {
