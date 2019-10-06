@@ -2,9 +2,6 @@ package com.gaozx.tank;
 
 import com.gaozx.tank.Strategy.DefaultFireStrategy;
 import com.gaozx.tank.Strategy.FireStrategy;
-import com.gaozx.tank.Strategy.FourDirFireStrategy;
-
-import javax.crypto.spec.DESedeKeySpec;
 import java.awt.*;
 import java.util.Random;
 
