@@ -12,14 +12,8 @@ public class TankFrame extends Frame {
     static final int GAME_WIDTH =  PropertyMgr.getInt("gameWidth");
     static final int GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
 
+    GameModel gm = new GameModel();
 
-    Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
-    {
-        myTank.setMoving(false);
-    }
-    List<Bullet> bullets = new ArrayList<>();
-    List<Tank> tanks = new ArrayList<>();
-    List<Explode> explodes = new ArrayList<>();
     //构造方法
     public TankFrame() throws HeadlessException {
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -54,31 +48,7 @@ public class TankFrame extends Frame {
     //paint 方法自动调用
     @Override
     public void paint(Graphics g){
-        Color c = g.getColor();
-        g.setColor(Color.WHITE);
-        g.drawString("子弹数量"+bullets.size(),10,60);
-        g.drawString("敌方坦克数量"+tanks.size(),10,80);
-        g.setColor(c);
-        //画坦克
-        myTank.paint(g);
-        //画子弹
-        for (int i = 0;i<bullets.size();i++){
-            bullets.get(i).paint(g);
-        }
-
-        for (int i = 0;i<tanks.size();i++){
-            tanks.get(i).paint(g);
-        }
-
-        for (int i = 0; i< explodes.size(); i++){
-            explodes.get(i).paint(g);
-        }
-
-        for(int i= 0 ;i <bullets.size();i++){
-            for (int j = 0; j<tanks.size();j++){
-                bullets.get(i).collideWith(tanks.get(j));
-            }
-        }
+        gm.paint(g);
 
     }
 
@@ -127,7 +97,7 @@ public class TankFrame extends Frame {
                     bD = false;
                     break;
                 case KeyEvent.VK_CONTROL:
-                    myTank.fire();
+                    gm.getMyTank().fire();
                     break;
                 default:
                     break;
@@ -137,13 +107,13 @@ public class TankFrame extends Frame {
 
         private void setMainTankDir() {
             if(!bL && !bU && !bR && !bD){
-                myTank.setMoving(false);
+                gm.getMyTank().setMoving(false);
             }else {
-                myTank.setMoving(true);
-                if (bL) myTank.setDir(Dir.LEFT);
-                if (bU) myTank.setDir(Dir.UP);
-                if (bR) myTank.setDir(Dir.RIGHT);
-                if (bD) myTank.setDir(Dir.DOWN);
+                gm.getMyTank().setMoving(true);
+                if (bL) gm.getMyTank().setDir(Dir.LEFT);
+                if (bU) gm.getMyTank().setDir(Dir.UP);
+                if (bR) gm.getMyTank().setDir(Dir.RIGHT);
+                if (bD) gm.getMyTank().setDir(Dir.DOWN);
             }
 
         }
