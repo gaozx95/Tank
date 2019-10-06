@@ -14,7 +14,9 @@ public class TankFrame extends Frame {
 
 
     Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
-
+    {
+        myTank.setMoving(false);
+    }
     List<Bullet> bullets = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
     List<Explode> explodes = new ArrayList<>();
