@@ -2,9 +2,6 @@ package com.gaozx.tank;
 
 import com.gaozx.tank.Strategy.DefaultFireStrategy;
 import com.gaozx.tank.Strategy.FireStrategy;
-import com.gaozx.tank.Strategy.FourDirFireStrategy;
-
-import javax.crypto.spec.DESedeKeySpec;
 import java.awt.*;
 import java.util.Random;
 
@@ -26,15 +23,15 @@ public class Tank {
 
     FireStrategy fs = DefaultFireStrategy.getInstance();
 //    FireStrategy fs ;
-    private TankFrame tf = null;
+    private GameModel gm = null;
     private Group group = Group.BAD;
 
-    public Tank(int x, int y, Dir dir,Group group, TankFrame tf) {
+    public Tank(int x, int y, Dir dir,Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
         rect.x = this.x;
         rect.y = this.y;
         rect.width = WIDTH;
@@ -85,8 +82,8 @@ public class Tank {
         this.dir = dir;
     }
 
-    public TankFrame getTf() {
-        return this.tf;
+    public GameModel getGm() {
+        return gm;
     }
 
     public boolean isMoving() {
@@ -100,7 +97,7 @@ public class Tank {
     public void paint(Graphics g) {
         //画图片
         if(!living){
-            tf.tanks.remove(this);
+            gm.tanks.remove(this);
         }
         switch (dir){
             case LEFT:
